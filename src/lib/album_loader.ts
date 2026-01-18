@@ -28,7 +28,7 @@ function parseDate(dateStr: string) {
   }
 
   for (let i = 0; i < 12; i++) {
-    if (dateStr.includes(dateStr.includes(shortMonths[i])) {
+    if (dateStr.includes(shortMonths[i])) {
       month = i + 1
       break
     }
