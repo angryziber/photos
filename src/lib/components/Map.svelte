@@ -2,7 +2,7 @@
   import {onMount} from 'svelte'
   import type {Album} from '$lib/album_loader'
 
-  let {albums}: {albums: Album[]} = $props()
+  let {albums, class: className}: {albums: Album[], class?: string} = $props()
 
   let mapElement: HTMLElement
   let map: any
@@ -73,4 +73,4 @@
   }
 </script>
 
-<div class="w-full h-96 overflow-hidden shadow-md mb-8" bind:this={mapElement}></div>
+<div class="w-full overflow-hidden shadow-md {className}" bind:this={mapElement}></div>

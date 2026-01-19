@@ -8,9 +8,9 @@
 <div class="container mx-auto px-4 py-8">
   <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">Anton Keks Photography</h1>
 
-  <Map albums={data.albums}/>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+    <Map albums={data.albums} class="col-span-full h-96 xl:col-start-4 lg:col-start-3 lg:col-span-2 lg:row-start-1 lg:row-span-2 lg:h-full"/>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     {#each data.albums as album}
       <a
         href={album.photosUrl}
