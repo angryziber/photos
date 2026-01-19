@@ -43,10 +43,3 @@
     {/each}
   </div>
 </div>
-
-<style>
-  :global(body) {
-    background-color: #f8fafc;
-    font-family: 'Inter', sans-serif;
-  }
-</style>
