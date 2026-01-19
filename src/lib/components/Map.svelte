@@ -73,4 +73,4 @@
   }
 </script>
 
-<div class="w-full h-96 rounded-2xl overflow-hidden shadow-md mb-8" bind:this={mapElement}></div>
+<div class="w-full h-96 overflow-hidden shadow-md mb-8" bind:this={mapElement}></div>

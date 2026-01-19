@@ -14,9 +14,8 @@
     {#each data.albums as album}
       <a
         href={album.photosUrl}
-        target="_blank"
         rel="noopener noreferrer"
-        class="group relative overflow-hidden rounded-2xl bg-gray-100 shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
+        class="group relative overflow-hidden bg-gray-100 shadow-md transition-all hover:-translate-y-1 hover:shadow-xl"
       >
         <div class="aspect-square overflow-hidden">
           <img
