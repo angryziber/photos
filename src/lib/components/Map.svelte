@@ -41,7 +41,7 @@
     map = new google.maps.Map(mapElement, {
       zoom: 1.5,
       center: {lat: 20, lng: 0},
-      mapTypeId: google.maps.MapTypeId.SATELLITE,
+      mapTypeId: google.maps.MapTypeId.HYBRID,
       streetViewControl: false,
       zoomControl: false,
       panControl: false,
