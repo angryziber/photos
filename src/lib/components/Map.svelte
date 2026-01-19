@@ -27,8 +27,16 @@
     const google = window['google']
 
     map = new google.maps.Map(mapElement, {
-      center: {lat: 20, lng: 0},
-      zoom: 2,
+      minZoom: 1,
+      mapTypeId: google.maps.MapTypeId.TERRAIN,
+      backgroundColor: '#3e5e89',
+      styles: [{
+        stylers: [
+          {saturation: -60},
+          {gamma: 0.6},
+          {lightness: -25}
+        ]
+      }],
     })
 
     const bounds = new google.maps.LatLngBounds()
