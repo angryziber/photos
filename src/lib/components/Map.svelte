@@ -5,7 +5,7 @@
   let {albums, class: className}: {albums: Album[], class?: string} = $props()
 
   let mapElement: HTMLElement
-  let map: any
+  let map: google.maps.Map
 
   onMount(() => {
     if (window['google']?.['maps']) {
@@ -24,8 +24,6 @@
   })
 
   function initMap() {
-    const google = window['google']
-
     map = new google.maps.Map(mapElement, {
       minZoom: 1,
       mapTypeId: google.maps.MapTypeId.SATELLITE,
