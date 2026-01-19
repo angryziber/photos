@@ -28,15 +28,11 @@
 
     map = new google.maps.Map(mapElement, {
       minZoom: 1,
-      mapTypeId: google.maps.MapTypeId.TERRAIN,
+      mapTypeId: google.maps.MapTypeId.SATELLITE,
+      streetViewControl: false,
+      zoomControl: false,
+      panControl: false,
       backgroundColor: '#3e5e89',
-      styles: [{
-        stylers: [
-          {saturation: -60},
-          {gamma: 0.6},
-          {lightness: -25}
-        ]
-      }],
     })
 
     const bounds = new google.maps.LatLngBounds()
