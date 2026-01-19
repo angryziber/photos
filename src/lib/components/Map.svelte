@@ -50,28 +50,15 @@
     })
 
     albums.forEach(album => {
-      if (album.lat !== undefined && album.lng !== undefined) {
-        const marker = new google.maps.Marker({
-          position: album,
-          map,
-          title: album.title,
-        })
+      const marker = new google.maps.Marker({
+        position: album,
+        map,
+        title: album.title,
+      })
 
-        const infoWindow = new google.maps.InfoWindow({
-          content: `
-            <div style="color: black; max-width: 200px;">
-                <h3 style="font-weight: bold; margin-bottom: 5px;">${album.title}</h3>
-                <p style="margin-bottom: 5px;">${album.date}</p>
-                <img src="${album.thumbnail}" style="width: 100%; height: auto; margin-bottom: 5px; border-radius: 4px;" />
-                <a href="${album.photosUrl}" target="_blank" style="color: blue; text-decoration: underline;">View Photos</a>
-            </div>
-            `
-        })
-
-        marker.addListener('click', () => {
-          infoWindow.open(map, marker)
-        })
-      }
+      marker.addListener('click', () => {
+        location.href = album.photosUrl
+      })
     })
   }
 </script>
