@@ -8,6 +8,7 @@ export interface Album {
   month: number
   year: number
   description: string
+  fullDescription: string
   thumbnail: string
   photosUrl: string
   lat: number
@@ -52,12 +53,15 @@ export function loadAlbums(): Album[] {
     let lat: number | undefined
     let lng: number | undefined
     const descriptionLines: string[] = []
+    const bodyLines: string[] = []
 
     for (const line of lines) {
       if (line.startsWith('# ')) {
         title = line.slice(2).trim()
+        bodyLines.push(line)
       } else if (line.startsWith('## ')) {
         date = line.slice(3).trim()
+        bodyLines.push(line)
       } else if (line.startsWith('.coords ')) {
         const parts = line.slice(8).trim().split(' ')
         if (parts.length >= 2) {
@@ -66,11 +70,14 @@ export function loadAlbums(): Album[] {
         }
       } else if (line.includes('goo.gl') || line.includes('photos.app.goo.gl')) {
         photosUrl = line.trim()
-      } else if (line.trim() && !line.startsWith('.') && !line.startsWith('#')) {
-        const trimmed = line.trim()
-        if (!trimmed.includes('goo.gl') && !trimmed.includes('photos.app.goo.gl') && !trimmed.startsWith('http')) {
-          descriptionLines.push(trimmed)
+      } else {
+        if (line.trim() && !line.startsWith('.')) {
+          const trimmed = line.trim()
+          if (!trimmed.includes('goo.gl') && !trimmed.includes('photos.app.goo.gl') && !trimmed.startsWith('http')) {
+            descriptionLines.push(trimmed)
+          }
         }
+        bodyLines.push(line)
       }
     }
 
@@ -81,6 +88,7 @@ export function loadAlbums(): Album[] {
       title: title || id,
       date, month, year,
       description: descriptionLines.join(' '),
+      fullDescription: bodyLines.join('\n').trim(),
       thumbnail: `albums/${id}.jpg`,
       photosUrl,
       lat, lng

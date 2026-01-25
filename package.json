@@ -20,6 +20,7 @@
 		"@sveltejs/vite-plugin-svelte": "^6.2.1",
 		"@tailwindcss/vite": "^4.1.17",
 		"@types/google.maps": "^3.55.2",
+		"@types/node": "^25.0.10",
 		"@vitest/browser-playwright": "^4.0.15",
 		"playwright": "^1.57.0",
 		"svelte": "^5.45.6",
@@ -29,5 +30,9 @@
 		"vite": "^7.2.6",
 		"vitest": "^4.0.15",
 		"vitest-browser-svelte": "^2.0.1"
+	},
+	"dependencies": {
+		"@tailwindcss/typography": "^0.5.19",
+		"snarkdown": "^2.0.0"
 	}
 }
