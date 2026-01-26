@@ -12,18 +12,18 @@
 
   let {data}: {data: PageData} = $props()
   let hoveredAlbum: Album | undefined = $state()
-  let selectedAlbum = $derived((page.state as any).selectedAlbum || data.albums.find(a => a.id === page.url.searchParams.get('album')))
+  let selectedAlbum = $derived((page.state as any).selectedAlbum || data.albums.find(a => a.id === page.url.hash.slice(1)))
 
   function openAlbum(album: Album) {
     const url = new URL(page.url.href)
-    url.searchParams.set('album', album.id)
+    url.hash = album.id
     pushState(url.href, {selectedAlbum: album})
   }
 
   function closeAlbum() {
     const url = new URL(page.url.href)
-    url.searchParams.delete('album')
-    pushState(url.href, {})
+    url.hash = ''
+    pushState(url.href.replace(/#$/, ''), {})
   }
 
   function handleKeydown(event: KeyboardEvent) {
