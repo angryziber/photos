@@ -26,6 +26,7 @@
 
   function closeAlbum() {
     location.hash = ''
+    history.replaceState(null, '', location.pathname)
   }
 
   function handleKeydown(event: KeyboardEvent) {
