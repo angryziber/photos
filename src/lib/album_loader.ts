@@ -11,8 +11,8 @@ export interface Album {
   fullDescription: string
   thumbnail: string
   photosUrl: string
-  lat: number
-  lng: number
+  lat?: number
+  lng?: number
 }
 
 const ALBUMS_DIR = path.resolve('albums')
@@ -58,10 +58,8 @@ export function loadAlbums(): Album[] {
     for (const line of lines) {
       if (line.startsWith('# ')) {
         title = line.slice(2).trim()
-        bodyLines.push(line)
       } else if (line.startsWith('## ')) {
         date = line.slice(3).trim()
-        bodyLines.push(line)
       } else if (line.startsWith('.coords ')) {
         const parts = line.slice(8).trim().split(' ')
         if (parts.length >= 2) {

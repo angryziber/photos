@@ -33,9 +33,9 @@
 
   $effect(() => {
     if (!map) return
-    if (hoveredAlbum) {
+    if (hoveredAlbum?.lat !== undefined && hoveredAlbum?.lng !== undefined) {
       map.setZoom(4)
-      map.panTo(hoveredAlbum)
+      map.panTo(hoveredAlbum as google.maps.LatLngLiteral)
     } else {
       map.setZoom(initialZoom)
       map.panTo(initialCenter)
@@ -54,9 +54,9 @@
       backgroundColor: '#3e5e89',
     })
 
-    albums.forEach(album => {
+    albums.filter(a => a.lat !== undefined && a.lng !== undefined).forEach(album => {
       const marker = new google.maps.Marker({
-        position: album,
+        position: album as google.maps.LatLngLiteral,
         map,
         title: album.title,
       })
