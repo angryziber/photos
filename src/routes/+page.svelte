@@ -1,29 +1,31 @@
 <script lang="ts">
+  import {onMount} from 'svelte'
   import type {PageData} from './$types'
   import Map from '$lib/components/Map.svelte'
   import type {Album} from '$lib/album_loader'
   import snarkdown from 'snarkdown'
   import {fade, fly} from 'svelte/transition'
-  import {pushState} from '$app/navigation'
-  import {page} from '$app/state'
   import RightArrowIcon from '$lib/components/RightArrowIcon.svelte'
   import CloseIcon from '$lib/components/CloseIcon.svelte'
   import ThumbIcon from '$lib/components/ThumbIcon.svelte'
 
   let {data}: {data: PageData} = $props()
   let hoveredAlbum: Album | undefined = $state()
-  let selectedAlbum = $derived((page.state as any).selectedAlbum || data.albums.find(a => a.id === page.url.hash.slice(1)))
+  let hash = $state('')
+
+  onMount(() => {
+    hash = location.hash
+    addEventListener('hashchange', () => hash = location.hash)
+  })
+
+  let selectedAlbum = $derived(data.albums.find(a => a.id === hash.slice(1)))
 
   function openAlbum(album: Album) {
-    const url = new URL(page.url.href)
-    url.hash = album.id
-    pushState(url.href, {selectedAlbum: album})
+    location.hash = album.id
   }
 
   function closeAlbum() {
-    const url = new URL(page.url.href)
-    url.hash = ''
-    pushState(url.href.replace(/#$/, ''), {})
+    location.hash = ''
   }
 
   function handleKeydown(event: KeyboardEvent) {
