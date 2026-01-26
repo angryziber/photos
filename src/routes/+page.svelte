@@ -118,9 +118,12 @@
           {@html snarkdown(selectedAlbum.fullDescription)}
         </article>
 
-        <div class="mt-16 flex items-center justify-between gap-8 border-t border-gray-100 pt-10">
-          <div class="text-gray-400 font-medium italic">
+        <div class="mt-16 flex items-center justify-between gap-8 border-t border-gray-100 pt-10 font-medium text-gray-400">
+          <div class=" italic">
             {selectedAlbum.date}
+          </div>
+          <div>
+            Anton Keks
           </div>
         </div>
       </div>
