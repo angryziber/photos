@@ -1,36 +1,27 @@
 <script lang="ts">
-  import {onMount} from 'svelte'
   import type {PageData} from './$types'
   import Map from '$lib/components/Map.svelte'
   import type {Album} from '$lib/album_loader'
-  import snarkdown from 'snarkdown'
   import {fade, fly} from 'svelte/transition'
-  import RightArrowIcon from '$lib/components/RightArrowIcon.svelte'
-  import CloseIcon from '$lib/components/CloseIcon.svelte'
-  import ThumbIcon from '$lib/components/ThumbIcon.svelte'
+  import {pushState} from '$app/navigation'
+  import {page} from '$app/state'
+  import AlbumDetail from '$lib/components/AlbumDetail.svelte'
 
   let {data}: {data: PageData} = $props()
   let hoveredAlbum: Album | undefined = $state()
-  let hash = $state('')
 
-  onMount(() => {
-    hash = location.hash
-    addEventListener('hashchange', () => hash = location.hash)
-  })
-
-  let selectedAlbum = $derived(data.albums.find(a => a.id === hash.slice(1)))
+  let selectedAlbum = $derived((page.state as any).selectedAlbum)
 
   function openAlbum(album: Album) {
-    location.hash = album.id
+    pushState(`/${album.id}`, {selectedAlbum: album})
   }
 
   function closeAlbum() {
-    location.hash = ''
-    history.replaceState(null, '', location.pathname)
+    history.back()
   }
 
   function handleKeydown(event: KeyboardEvent) {
-    if (event.key === 'Escape') closeAlbum()
+    if (event.key === 'Escape' && selectedAlbum) closeAlbum()
   }
 </script>
 
@@ -88,46 +79,7 @@
       onclick={e => e.stopPropagation()} onkeydown={e => e.stopPropagation()}
       role="document"
     >
-      <div class="sticky top-0 bg-white/95 backdrop-blur-md z-20 p-6 md:px-10 border-b border-gray-100 flex items-center justify-between gap-4 rounded-t-3xl">
-        <h2 class="text-2xl font-bold text-gray-900 leading-tight">{selectedAlbum.title}</h2>
-        <div class="flex items-center gap-2 md:gap-4">
-          <a href={selectedAlbum.photosUrl} rel="noopener noreferrer"
-            class="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all active:scale-95 group/topbtn whitespace-nowrap shadow-sm">
-            <span class="hidden sm:inline">View Photos</span>
-            <span class="sm:hidden text-sm">Photos</span>
-            <RightArrowIcon class="group-hover/topbtn:translate-x-1"/>
-          </a>
-          <button onclick={closeAlbum} title="Close"
-            class="text-gray-400 hover:text-gray-900 transition-colors p-2 bg-gray-50 rounded-full shadow-sm hover:scale-110 active:scale-95">
-            <CloseIcon/>
-          </button>
-        </div>
-      </div>
-
-      <div class="flex-1 overflow-y-auto p-6 md:p-10">
-        <a href={selectedAlbum.photosUrl} rel="noopener noreferrer"
-          class="block group/thumb aspect-video mb-10 overflow-hidden rounded shadow-xl relative">
-          <img src={selectedAlbum.thumbnail} alt={selectedAlbum.title} class="w-full h-full object-cover transition-transform duration-700 group-hover/thumb:scale-105">
-          <div class="absolute inset-0 bg-black/0 group-hover/thumb:bg-black/10 transition-colors flex items-center justify-center">
-            <div class="bg-white/90 p-4 rounded-full shadow-lg opacity-0 group-hover/thumb:opacity-100 transition-all scale-75 group-hover/thumb:scale-100">
-              <ThumbIcon/>
-            </div>
-          </div>
-        </a>
-
-        <article class="prose prose-slate lg:prose-xl max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600">
-          {@html snarkdown(selectedAlbum.fullDescription)}
-        </article>
-
-        <div class="mt-16 flex items-center justify-between gap-8 border-t border-gray-100 pt-10 font-medium text-gray-400">
-          <div class=" italic">
-            {selectedAlbum.date}
-          </div>
-          <div>
-            Anton Keks
-          </div>
-        </div>
-      </div>
+      <AlbumDetail album={selectedAlbum} showClose={true} onclose={closeAlbum} />
     </section>
   </div>
 {/if}
