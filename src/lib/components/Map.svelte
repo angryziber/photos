@@ -32,13 +32,12 @@
   })
 
   $effect(() => {
-    if (!map) return
     if (hoveredAlbum?.lat !== undefined && hoveredAlbum?.lng !== undefined) {
-      map.setZoom(4)
-      map.panTo(hoveredAlbum as google.maps.LatLngLiteral)
+      map?.setZoom(4)
+      map?.panTo(hoveredAlbum as google.maps.LatLngLiteral)
     } else {
-      map.setZoom(initialZoom)
-      map.panTo(initialCenter)
+      map?.setZoom(initialZoom)
+      map?.panTo(initialCenter)
     }
   })
 
