@@ -5,7 +5,7 @@ https://photos.app.goo.gl/khrMAcARPYeq4Tzt5
 ## October 2021
 
 I wanted to visit Azores Islands for a long time, but every time they seemed a bit remote, so weren't a priority.
-Finally, I was able to [sail on Atyla tall ship](/AtylaToAzores) to the islands and then spend 9 more days island-hopping 
+Finally, I was able to [sail on Atyla tall ship](../AtylaToAzores) to the islands and then spend 9 more days island-hopping 
 and exploring what these green and extremely fertile islands have to offer.
 
 ### São Miguel
