@@ -10,18 +10,15 @@
   } = $props()
 
   let mapElement: HTMLElement
-  let map: google.maps.Map
+  let map: google.maps.Map | undefined = $state()
 
   const initialZoom = 1.5
   const initialCenter = {lat: 20, lng: 0}
 
   onMount(() => {
-    if ((window as any).google?.maps) {
-      initMap()
-      return
-    }
+    if (window.google?.maps) return initMap()
 
-    (window as any).initMap = initMap
+    window.initMap = initMap
     const key = 'AIzaSyBgn7wSYI8l-JD1X2LAJUqIUfWX9ezLoIA'
     const script = document.createElement('script')
     script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&callback=initMap`
