@@ -13,7 +13,7 @@
   let selectedAlbum = $derived((page.state as any).selectedAlbum)
 
   function openAlbum(album: Album) {
-    pushState(`/${album.id}`, {selectedAlbum: album})
+    pushState(album.id, {selectedAlbum: album})
   }
 
   function closeAlbum() {
@@ -46,7 +46,7 @@
         </div>
 
         <div
-          class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 flex flex-col justify-end opacity-90 transition-opacity group-hover:opacity-100">
+          class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent p-4 flex flex-col justify-end opacity-90 transition-opacity group-hover:opacity-100">
           <h2 class="text-xl font-bold text-white leading-tight mb-1">{album.title}</h2>
           <div class="flex items-center justify-between">
             <span class="text-sm font-medium text-gray-300">{album.date}</span>

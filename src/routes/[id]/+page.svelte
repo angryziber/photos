@@ -21,6 +21,6 @@
   </div>
 
   <div class="bg-white rounded shadow-xl border border-gray-100 overflow-hidden">
-    <AlbumDetail album={data.album} />
+    <AlbumDetail album={data.album}/>
   </div>
 </div>
