@@ -12,7 +12,7 @@
 
 <div class="container mx-auto px-4 py-8 max-w-4xl">
   <div class="mb-8">
-    <a href="/" class="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2">
+    <a href=".." class="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
       </svg>
