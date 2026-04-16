@@ -44,4 +44,4 @@ Having many days and many people in the middle of the ocean cannot also go 100% 
 
 Then, we had to all part and go in different directions, with us taking some flights to still visit Faial, Terceira, and even climb Mount Pico, the highest point of the Azores and the whole of Portugal. It’s great we could still meet some of the crew on the way again, and the wine festival back in São Miguel was a great finale for the whole trip. The official Atyla t-shirts have “Challenge Accepted” written on the front side – that sums the experience pretty well, with the whole experience still being quite enjoyable when you think about it. Sailing a tall ship across the ocean is very different from sailing a boat in the Baltics, and is a great thing to try. I would gladly do a similar trip again, thanks to Atyla, it’s founders and the crew, and the great team we had!
 
-See also my album on [Azores islands](#Azores) themselves.
+See also my album on [Azores islands](/Azores) themselves.
